@@ -1,0 +1,132 @@
+datasource db {
+    provider = "mongodb"
+    url      = env("DATABASE_URL")
+}
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+model cart {
+    id        String  @id @default(auto()) @map("_id") @db.ObjectId
+    slug      String  @unique
+    title     String
+    body      String
+    user      user    @relation(fields: [userId], references: [id])
+    userId    String  @db.ObjectId
+    product   product @relation(fields: [productId], references: [id])
+    productId String  @db.ObjectId
+}
+
+model user {
+    id       String   @id @default(auto()) @map("_id") @db.ObjectId
+    email    String   @unique
+    name     String?
+    password String?
+    contact  String   @default("gdshkjdsh")
+    userType userType @default(ADMIN)
+    // address  Address  @embedded
+    // carts    cart[]   @relation("UserCarts")
+    cart     cart[]
+}
+
+enum userType {
+    ADMIN
+    SELLER
+    BUYER
+}
+
+model product {
+    id          String @id @default(auto()) @map("_id") @db.ObjectId
+    name        String
+    type        types?
+    description String
+    price       String
+    count       Int
+    buyers      cart[]
+}
+
+enum types {
+    fashion
+    grocery
+    homeWare
+    cloth
+    beauty
+}
+
+/**
+ * model Address {
+ * street String
+ * city   String
+ * state  String
+ * zip    String
+ * }
+ */
+
+/**
+ * datasource db {
+ * provider = "mongodb"
+ * url      = env("DATABASE_URL")
+ * }
+ * generator client {
+ * provider = "prisma-client-js"
+ * }
+ * model cart {
+ * id        String  @id @default(auto()) @map("_id") @db.ObjectId
+ * slug      String  @unique
+ * title     String
+ * body      String
+ * //user    User    @relation(fields: [userId], references: [id])
+ * //userId  String  @db.ObjectId
+ * product   product @relation(fields: [productId], references: [id])
+ * productId String  @db.ObjectId
+ * }
+ * model user {
+ * id       String    @id @default(auto()) @map("_id") @db.ObjectId
+ * email    String    @unique
+ * name     String?
+ * password  String?
+ * }
+ * /*
+ * model User {
+ * id       String    @id @default(auto()) @map("_id") @db.ObjectId
+ * email    String    @unique
+ * name     String?
+ * password  String?
+ * contact  String @default("gdshkjdsh")
+ * userType userType @default(ADMIN)
+ * address  Address @ignore
+ * carts    cart[] @ignore
+ * }
+ */
+/**
+ * enum userType {
+ * ADMIN
+ * SELLER
+ * BUYER
+ * }
+ * model product {
+ * id          String @id @default(auto()) @map("_id") @db.ObjectId
+ * name        String
+ * type        types?
+ * description String
+ * price       String
+ * count       Int
+ * // cart        cart   @relation(fields: [cartId], references: [id])
+ * buyers      cart[]
+ * }
+ * enum types {
+ * fashion
+ * grocery
+ * homeWare
+ * cloth
+ * beauty
+ * }
+ * // Address is an embedded document
+ * type Address {
+ * street String
+ * city   String
+ * state  String
+ * zip    String
+ * }
+ */

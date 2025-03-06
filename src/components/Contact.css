@@ -1,0 +1,147 @@
+
+body {
+    font-family: 'Playfair Display', serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    color: #333;
+}
+
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 15px 50px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .logo {
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.navbar a {
+    color: #111;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.navbar a:hover,
+.navbar a.active {
+    color: #E63946;
+}
+
+.navbar .icons {
+    display: flex;
+    gap: 15px;
+    font-size: 18px;
+}
+
+/* Shop Container */
+.shop-container {
+    display: flex;
+    padding: 40px 60px;
+}
+
+/* Filters Section */
+.filters {
+    width: 250px;
+    padding: 20px;
+}
+
+.filters h3 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.filter-section {
+    margin-top: 20px;
+}
+
+.filter-section h4 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.filter-section label {
+    font-size: 14px;
+    display: block;
+    margin: 5px 0;
+}
+
+/* Products Section */
+.products-section {
+    flex-grow: 1;
+    padding-left: 40px;
+}
+
+.products-section h2 {
+    font-size: 26px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.products-section h2 span {
+    color: #E63946;
+}
+
+/* Sort Dropdown */
+.sort-dropdown {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.sort-dropdown select {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Product Grid */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.product {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.product:hover {
+    transform: translateY(-5px);
+}
+
+.product img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.product p {
+    font-size: 14px;
+    margin: 10px 0;
+}
+
+.product strong {
+    color: #E63946;
+    font-size: 16px;
+}
